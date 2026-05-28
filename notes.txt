@@ -1,3 +1,1 @@
-Hello Git
-Learning DevOps
-Test
+Hello From Master
