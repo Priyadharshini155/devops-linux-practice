@@ -5,22 +5,24 @@ pipeline{
 
     stage('Build'){
       steps{
-        echo 'Build started'
+        // echo 'Build started'
+        sh 'date'
       }
     }
 
     stage('Test'){
       steps{
-        echo 'Test started'
+        // echo 'Test started'
+        sh 'whoami'
       }
     }
 
     stage('Deploy'){
       steps{
         //echo 'Deploy started'
-        sh 'date'
-        sh 'whoami'
-        sh 'hostname'
+        // sh 'date'
+        // sh 'whoami'
+        sh 'pwd'
       }
     }
     
