@@ -17,7 +17,10 @@ pipeline{
 
     stage('Deploy'){
       steps{
-        echo 'Deploy started'
+        //echo 'Deploy started'
+        sh 'date'
+        sh 'whoami'
+        sh 'hostname'
       }
     }
     
