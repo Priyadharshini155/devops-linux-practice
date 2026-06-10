@@ -46,10 +46,28 @@ pipeline{
       //     }
       // }
 
-      stage('ChoiceParameters'){
-        steps{
-          echo "Selected Environment: ${params.ENV}"
-          }
+      // stage('ChoiceParameters'){
+      //   steps{
+      //     echo "Selected Environment: ${params.ENV}"
+      //     }
+      // }
+
+      stage('Build'){
+      steps{
+        echo 'Build Completed'
       }
+    }
+
+    stage('Approval'){
+      steps{
+        input 'Proceed to Deploy?'
+      }
+    }
+
+    stage('Deploy'){
+      steps{
+        echo 'Deployment Started'
+      }
+    }
   }
 }
