@@ -26,10 +26,17 @@ pipeline{
     //   }
     // }
     
-    stage('Docker Version'){
-        steps{
-          sh 'docker --version'
-        }
-      } 
+    // stage('Docker Version'){
+    //     steps{
+    //       sh 'docker --version'
+    //     }
+    //   } 
+
+    stage('Environment Variables'){
+      steps{
+        echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
+        echo "JOB_NAME: ${env.JOB_NAME}"
+        echo "NODE_NAME: ${env.NODE_NAME}"  
+      }
   }
 }
