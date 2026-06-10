@@ -1,8 +1,16 @@
 pipeline{
   agent any
 
-  environment{
-    APP_NAME = 'MyApplication'
+  // environment{
+  //   APP_NAME = 'MyApplication'
+  // }
+
+ parameters{
+    choice(
+      name: 'ENV', 
+      choices: ['dev', 'qa', 'prod'], 
+      description: 'Select the environment to deploy'
+      )
   }
 
   stages{
@@ -74,11 +82,16 @@ pipeline{
     //   }
     // }
     
-    stage('Build'){
+    // stage('Build'){
+    //   steps{
+    //     echo "Application Name: ${APP_NAME}"
+    //   }
+    // }
+
+    stage('Deploy to Environment'){
       steps{
-        echo "Application Name: ${APP_NAME}"
+        echo "Deploying to ${params.ENV} environment"
       }
     }
-
   }
 }
