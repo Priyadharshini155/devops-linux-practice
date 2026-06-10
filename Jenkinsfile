@@ -32,12 +32,18 @@ pipeline{
     //     }
     //   } 
 
-    stage('Environment Variables'){
-      steps{
-        echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
-        echo "JOB_NAME: ${env.JOB_NAME}"
-        echo "NODE_NAME: ${env.NODE_NAME}"  
+    // stage('Environment Variables'){
+    //   steps{
+    //     echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
+    //     echo "JOB_NAME: ${env.JOB_NAME}"
+    //     echo "NODE_NAME: ${env.NODE_NAME}"  
+    //   }
+    // }
+
+      stage('Parameters'){
+        steps{
+          echo "Environment: ${params.ENV}"
+          }
       }
-    }
   }
 }
