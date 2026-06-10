@@ -1,6 +1,10 @@
 pipeline{
   agent any
 
+  environment{
+    APP_NAME = 'MyApplication'
+  }
+
   stages{
 
     // stage('Build'){
@@ -52,22 +56,29 @@ pipeline{
       //     }
       // }
 
-      stage('Build'){
+    //   stage('Build'){
+    //   steps{
+    //     echo 'Build Completed'
+    //   }
+    // }
+
+    // stage('Approval'){
+    //   steps{
+    //     input 'Proceed to Deploy?'
+    //   }
+    // }
+
+    // stage('Deploy'){
+    //   steps{
+    //     echo 'Deployment S'
+    //   }
+    // }
+    
+    stage('Build'){
       steps{
-        echo 'Build Completed'
+        echo "Application Name: ${APP_NAME}"
       }
     }
 
-    stage('Approval'){
-      steps{
-        input 'Proceed to Deploy?'
-      }
-    }
-
-    stage('Deploy'){
-      steps{
-        echo 'Deployment Started'
-      }
-    }
   }
 }
