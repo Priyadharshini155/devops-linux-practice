@@ -40,9 +40,15 @@ pipeline{
     //   }
     // }
 
-      stage('Parameters'){
+      // stage('Parameters'){
+      //   steps{
+      //     echo "Environment: ${params.ENV}"
+      //     }
+      // }
+
+      stage('ChoiceParameters'){
         steps{
-          echo "Environment: ${params.ENV}"
+          echo "Selected Environment: ${params.ENV}"
           }
       }
   }
