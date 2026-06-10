@@ -94,39 +94,54 @@ pipeline{
     //   }
     // }
 
-    stage('Dev Deployment'){
-      when{
-        expression { params.ENV == 'dev' }
-      }
-      steps{
-        // echo 'Deploying to DEV environment'
-        sh 'echo Deploying to DEV environment'
-        sh 'date'
-        sh 'hostname'
-      }
-    }
+    // stage('Dev Deployment'){
+    //   when{
+    //     expression { params.ENV == 'dev' }
+    //   }
+    //   steps{
+    //     // echo 'Deploying to DEV environment'
+    //     sh 'echo Deploying to DEV environment'
+    //     sh 'date'
+    //     sh 'hostname'
+    //   }
+    // }
 
-    stage('QA Deployment'){
-      when {
-        expression { params.ENV == 'qa' }
-      }
-      steps{
-        // echo 'Deploying to QA environment'
-        sh 'echo Deploying to QA environment'
-        sh 'whoami'
-        sh 'pwd'
-      }
-    }
+    // stage('QA Deployment'){
+    //   when {
+    //     expression { params.ENV == 'qa' }
+    //   }
+    //   steps{
+    //     // echo 'Deploying to QA environment'
+    //     sh 'echo Deploying to QA environment'
+    //     sh 'whoami'
+    //     sh 'pwd'
+    //   }
+    // }
 
-    stage('Prod environment'){
-      when{
-        expression { params.ENV == 'prod' }
-      }
-      steps{
-        // echo 'Deploying to Prod environment'
-        sh 'echo Deploying to Prod environment'
-        sh 'uname -r'
-      }
+    // stage('Prod environment'){
+    //   when{
+    //     expression { params.ENV == 'prod' }
+    //   }
+    //   steps{
+    //     // echo 'Deploying to Prod environment'
+    //     sh 'echo Deploying to Prod environment'
+    //     sh 'uname -r'
+    //   }
+    // }
+
+    stage('Credential Test') {
+            steps {
+
+                withCredentials([
+                    string(
+                        credentialsId: 'github-token',
+                        variable: 'TOKEN'
+                    )
+                ]) {
+
+                    sh 'echo Credential Loaded'
+                }
+            }
     }
   }
 }
