@@ -99,7 +99,10 @@ pipeline{
         expression { params.ENV == 'dev' }
       }
       steps{
-        echo 'Deploying to DEV environment'
+        // echo 'Deploying to DEV environment'
+        sh 'echo Deploying to DEV environment'
+        sh 'date'
+        sh 'hostname'
       }
     }
 
@@ -108,7 +111,10 @@ pipeline{
         expression { params.ENV == 'qa' }
       }
       steps{
-        echo 'Deploying to QA environment'
+        // echo 'Deploying to QA environment'
+        sh 'echo Deploying to QA environment'
+        sh 'whoami'
+        sh 'pwd'
       }
     }
 
@@ -117,7 +123,9 @@ pipeline{
         expression { params.ENV == 'prod' }
       }
       steps{
-        echo 'Deploying to Prod environment'
+        // echo 'Deploying to Prod environment'
+        sh 'echo Deploying to Prod environment'
+        sh 'uname -r'
       }
     }
   }
