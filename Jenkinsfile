@@ -88,9 +88,36 @@ pipeline{
     //   }
     // }
 
-    stage('Deploy to Environment'){
+    // stage('Deploy to Environment'){
+    //   steps{
+    //     echo "Deploying to ${params.ENV} environment"
+    //   }
+    // }
+
+    stage('Dev Deployment'){
+      when{
+        expression { params.ENV == 'dev' }
+      }
       steps{
-        echo "Deploying to ${params.ENV} environment"
+        echo 'Deploying to DEV environment'
+      }
+    }
+
+    stage('QA Deployment'){
+      when {
+        expression { params.ENV == 'qa' }
+      }
+      steps{
+        echo 'Deploying to QA environment'
+      }
+    }
+
+    stage('Prod environment'){
+      when{
+        expression { params.ENV == 'prod' }
+      }
+      steps{
+        echo 'Deploying to Prod environment'
       }
     }
   }
