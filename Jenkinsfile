@@ -38,5 +38,6 @@ pipeline{
         echo "JOB_NAME: ${env.JOB_NAME}"
         echo "NODE_NAME: ${env.NODE_NAME}"  
       }
+    }
   }
 }
