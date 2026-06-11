@@ -1,7 +1,7 @@
 pipeline{
   // agent any
   agent {
-    label 'built-in'
+    label 'linux'
   }
 
   // environment{
