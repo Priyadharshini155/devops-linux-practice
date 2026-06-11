@@ -174,7 +174,6 @@ pipeline{
            echo 'Running security scan...'
           }
         }
-        }
       }
     }
   }
