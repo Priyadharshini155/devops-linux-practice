@@ -129,19 +129,27 @@ pipeline{
     //   }
     // }
 
-    stage('Credential Test') {
-            steps {
+    // stage('Credential Test') {
+    //         steps {
 
-                withCredentials([
-                    string(
-                        credentialsId: 'github-token',
-                        variable: 'TOKEN'
-                    )
-                ]) {
+    //             withCredentials([
+    //                 string(
+    //                     credentialsId: 'github-token',
+    //                     variable: 'TOKEN'
+    //                 )
+    //             ]) {
 
-                    sh 'echo Credential Loaded'
-                }
-            }
+    //                 sh 'echo Credential Loaded'
+    //             }
+    //         }
+    // }
+
+    stage('Node Information') {
+      steps {
+        sh 'hostname'
+        sh 'whoami'
+        sh 'pwd'
+      }
     }
   }
 }
