@@ -191,18 +191,32 @@ pipeline{
     //   }
     // }
 
-    stage('Build Docker Image') {
+    // stage('Build Docker Image') {
+    //   steps {
+    //     echo 'Building Docker Image...'
+    //     sh 'docker build -t myapp:v1 .'
+    //   }
+    // }
+
+    // stage('Docker Images') {
+    //   steps {
+    //     echo 'Listing Docker Images...'
+    //     sh 'docker images'
+    //   }
+    // }
+
+    stage('Run Container') {
       steps {
-        echo 'Building Docker Image...'
-        sh 'docker build -t myapp:v1 .'
+        echo 'Running Docker Container...'
+        sh 'docker run -d -p 8080:80 --name mycontainer myapp:v1'
       }
     }
 
-    stage('Docker Images') {
+     stage('Container List') {
       steps {
-        echo 'Listing Docker Images...'
-        sh 'docker images'
+        echo 'Listing Running Containers...'
+        sh 'docker ps'
       }
-    }
+     }
   }
 }
