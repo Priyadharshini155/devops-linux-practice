@@ -177,10 +177,24 @@ pipeline{
     //   }
     // }
 
-    stage('Maven Demo') {
+    // stage('Maven Demo') {
+    //   steps {
+    //     echo 'Executing Maven Version...'
+    //     sh 'mvn --version'
+    //   }
+    // }
+
+    stage('Docker Version') {
       steps {
-        echo 'Executing Maven Version...'
-        sh 'mvn --version'
+        echo 'Checking Docker Version...'
+        sh 'docker --version'
+      }
+    }
+
+    stage('Docker Images') {
+      steps {
+        echo 'Listing Docker Images...'
+        sh 'docker images'
       }
     }
   }
