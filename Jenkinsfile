@@ -179,8 +179,8 @@ pipeline{
 
     stage('Maven Demo') {
       steps {
-        echo 'Executing Maven Build...'
-        sh 'echo mvn clean install'
+        echo 'Executing Maven Version...'
+        sh 'mvn --version'
       }
     }
   }
