@@ -1,5 +1,8 @@
 pipeline{
-  agent any
+  // agent any
+  agent {
+    label 'built-in'
+  }
 
   // environment{
   //   APP_NAME = 'MyApplication'
@@ -144,11 +147,18 @@ pipeline{
     //         }
     // }
 
-    stage('Node Information') {
+    // stage('Node Information') {
+    //   steps {
+    //     sh 'hostname'
+    //     sh 'whoami'
+    //     sh 'pwd'
+    //   }
+    // }
+
+    stage('Label Test') {
       steps {
+        sh 'echo Running on node: ${NODE_NAME}'
         sh 'hostname'
-        sh 'whoami'
-        sh 'pwd'
       }
     }
   }
