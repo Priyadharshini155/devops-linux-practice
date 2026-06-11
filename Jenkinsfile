@@ -208,7 +208,9 @@ pipeline{
     stage('Run Container') {
       steps {
         echo 'Running Docker Container...'
-        sh 'docker run -d -p 8081:80 --name mycontainer myapp:v1'
+        // sh 'docker run -d -p 8081:80 --name mycontainer myapp:v1'
+         sh 'docker rm -f mycontainer || true'
+         sh 'docker run -d --name mycontainer myapp:v1'
       }
     }
 
