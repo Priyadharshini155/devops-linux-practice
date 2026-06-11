@@ -184,10 +184,17 @@ pipeline{
     //   }
     // }
 
-    stage('Docker Version') {
+    // stage('Docker Version') {
+    //   steps {
+    //     echo 'Checking Docker Version...'
+    //     sh 'docker --version'
+    //   }
+    // }
+
+    stage('Build Docker Image') {
       steps {
-        echo 'Checking Docker Version...'
-        sh 'docker --version'
+        echo 'Building Docker Image...'
+        sh 'docker build -t myapp:v1 .'
       }
     }
 
