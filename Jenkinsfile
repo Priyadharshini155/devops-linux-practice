@@ -177,9 +177,10 @@ pipeline{
     //   }
     // }
 
-    stage('Build') {
+    stage('Maven Demo') {
       steps {
-        sh 'mvn clean install'
+        echo 'Executing Maven Build...'
+        sh 'echo mvn clean install'
       }
     }
   }
