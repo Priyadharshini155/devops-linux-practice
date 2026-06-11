@@ -1,20 +1,20 @@
 pipeline{
-  // agent any
-  agent {
-    label 'linux'
-  }
+  agent any
+  // agent {
+  //   label 'linux'
+  // }
 
   // environment{
   //   APP_NAME = 'MyApplication'
   // }
 
- parameters{
-    choice(
-      name: 'ENV', 
-      choices: ['dev', 'qa', 'prod'], 
-      description: 'Select the environment to deploy'
-      )
-  }
+//  parameters{
+//     choice(
+//       name: 'ENV', 
+//       choices: ['dev', 'qa', 'prod'], 
+//       description: 'Select the environment to deploy'
+//       )
+//   }
 
   stages{
 
@@ -155,10 +155,26 @@ pipeline{
     //   }
     // }
 
-    stage('Label Test') {
-      steps {
-        sh 'echo Running on node: ${NODE_NAME}'
-        sh 'hostname'
+    // stage('Label Test') {
+    //   steps {
+    //     sh 'echo Running on node: ${NODE_NAME}'
+    //     sh 'hostname'
+    //   }
+    // }
+
+    stage('Parallel Stages') {
+      parallel {
+        stage('Test') {
+          steps {
+            echo 'Running tests...'
+          }
+        }
+        stage('Scan') {
+          steps {
+           echo 'Running security scan...'
+          }
+        }
+        }
       }
     }
   }
