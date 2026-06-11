@@ -162,18 +162,24 @@ pipeline{
     //   }
     // }
 
-    stage('Parallel Stages') {
-      parallel {
-        stage('Test') {
-          steps {
-            echo 'Running tests...'
-          }
-        }
-        stage('Scan') {
-          steps {
-           echo 'Running security scan...'
-          }
-        }
+    // stage('Parallel Stages') {
+    //   parallel {
+    //     stage('Test') {
+    //       steps {
+    //         echo 'Running tests...'
+    //       }
+    //     }
+    //     stage('Scan') {
+    //       steps {
+    //        echo 'Running security scan...'
+    //       }
+    //     }
+    //   }
+    // }
+
+    stage('Build') {
+      steps {
+        sh 'mvn clean install'
       }
     }
   }
