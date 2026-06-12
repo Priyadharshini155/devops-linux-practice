@@ -221,12 +221,12 @@ pipeline{
     //   }
     //  }
 
-    stage('checkout') {
-      steps {
-        echo 'Checking out code from Git...'
-        git url: 'https://github.com/Priyadharshini155/devops-linux-practice.git' 
-      }
-    }
+    // stage('checkout') {
+    //   steps {
+    //     echo 'Checking out code from Git...'
+    //     git url: 'https://github.com/Priyadharshini155/devops-linux-practice.git' 
+    //   }
+    // }
 
     stage('check files') {
       steps {
