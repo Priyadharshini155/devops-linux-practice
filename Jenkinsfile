@@ -228,6 +228,14 @@ pipeline{
       }
     }
 
+    stage('check files') {
+      steps {
+        echo 'Checking files in workspace...'
+        sh 'pwd'
+        sh 'ls -l'
+      }
+    }
+
     stage('Build') {
       steps {
         echo 'Build started...'
