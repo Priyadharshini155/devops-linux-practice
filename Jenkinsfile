@@ -205,20 +205,46 @@ pipeline{
     //   }
     // }
 
-    stage('Run Container') {
+    // stage('Run Container') {
+    //   steps {
+    //     echo 'Running Docker Container...'
+    //     // sh 'docker run -d -p 8081:80 --name mycontainer myapp:v1'
+    //      sh 'docker rm -f mycontainer || true'
+    //      sh 'docker run -d --name mycontainer myapp:v1'
+    //   }
+    // }
+
+    //  stage('Container List') {
+    //   steps {
+    //     echo 'Listing Running Containers...'
+    //     sh 'docker ps'
+    //   }
+    //  }
+
+    stage('checkout') {
       steps {
-        echo 'Running Docker Container...'
-        // sh 'docker run -d -p 8081:80 --name mycontainer myapp:v1'
-         sh 'docker rm -f mycontainer || true'
-         sh 'docker run -d --name mycontainer myapp:v1'
+        echo 'Checking out code from Git...'
+        git url: 'https://github.com/Priyadharshini155/devops-linux-practice.git' 
       }
     }
 
-     stage('Container List') {
+    stage('Build') {
       steps {
-        echo 'Listing Running Containers...'
-        sh 'docker ps'
+        sh 'mvn clean install'
       }
-     }
+    }
+
+    stage('Docker Build') {
+      steps {
+        sh 'docker build -t myapp:v1 .'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        sh 'docker rm -f myapp || true'
+        sh 'docker run -d --name myapp -p 8082:80 myapp:v1'
+      }
+    }
   }
 }
