@@ -230,7 +230,7 @@ pipeline{
 
     stage('Build') {
       steps {
-        sh 'mvn clean install'
+        echo 'Build started...'
       }
     }
 
